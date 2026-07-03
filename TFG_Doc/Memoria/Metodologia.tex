@@ -35,8 +35,8 @@ a cada fase.
 
 El rendiment d'un agent es mesura amb la funció \texttt{evaluar\_agent()}, que juga un
 nombre fix de partides senceres contra dos oponents de referència: 100~partides contra
-un agent aleatori (l'agent aleatori) i 100~partides contra l'agent basat en regles
-(l'agent basat en regles). Per evitar el biaix posicional (ser \emph{mà} dona un lleuger
+l'agent aleatori i 100~partides contra l'agent basat en regles. Per evitar el biaix
+posicional (ser \emph{mà} dona un lleuger
 avantatge), l'agent alterna la seva posició (jugador~0 i jugador~1) en partides
 consecutives. L'avaluació es fa cada 500\,000~passos d'entrenament i sempre sobre
 \textbf{partides senceres}, encara que l'agent s'estigui entrenant sobre mans
@@ -61,7 +61,7 @@ igualtat de condicions. La mètrica combina el win-rate contra dos oponents comp
   \label{eq:metric}
 \end{equation}
 
-Cada terme compleix una funció diferent. L'l'agent basat en regles (pes 0{,}75) és l'oponent
+Cada terme compleix una funció diferent. L'agent basat en regles (pes 0{,}75) és l'oponent
 \textbf{discriminant}: batre una heurística coherent requereix estratègia real, de manera
 que aquest terme és el que captura la qualitat de l'agent. L'agent aleatori
 (pes 0{,}25) actua com a \textbf{xarxa de seguretat}: guanyar-li és trivial, però un agent
@@ -145,7 +145,7 @@ valors neutres descrits més amunt.
 Llevat que s'indiqui el contrari, tots els agents comparteixen l'arquitectura base de
 xarxa (\ac{MLP} de dues capes ocultes de 256~unitats amb ReLU) i s'avaluen sobre
 l'observació de 240~dimensions descrita al capítol~\ref{cap:entorns}. El pressupost
-d'entrenament s'expressa en \emph{timesteps} (passos d'interacció amb l'entorn). Els
+d'entrenament s'expressa en \emph{timesteps} (passos d'interacció amb l'entorn).
 Al cos del capítol només se'n destaquen els hiperparàmetres rellevants per a cada decisió.
 
 \input{MetodologiaBloc1}

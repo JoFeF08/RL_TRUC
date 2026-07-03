@@ -59,7 +59,7 @@ entrenament independent per a cada pressupost:
 contra l'agent aleatori (per mantenir diversitat i explorar estats poc habituals) i el
 gruix contra l'agent basat en regles (el senyal estratègic principal). La diferència és el
 \emph{self-play}: els agents de RLCard (DQN i NFSP) el suporten de manera nativa, de manera
-que un 30\% de les partides es juguen contra una versió del propi agent, en canvi, els agents de \ac{SB3} no incorporen self-play. En el cas del DQN,
+que un 30\% de les partides es juguen contra una versió del propi agent; els agents de \ac{SB3}, en canvi, no incorporen self-play. En el cas del DQN,
 aquesta versió és una còpia \emph{Polyak} que s'actualitza lentament (un 5\% cap als pesos
 actuals cada 5\,000~passos): així l'oponent millora amb l'agent però no canvia tan de
 pressa com per desestabilitzar l'aprenentatge.
@@ -224,7 +224,8 @@ competència real.
 automàtic: els pesos de la primera etapa (\texttt{best\_mans}) es carreguen explícitament
 abans de la segona, via \texttt{PPO.load()} o carregant l'estat de la xarxa~$Q$ segons
 l'agent. A més, per al DQN-SB3 es redueix l'exploració inicial del \emph{finetune}
-($\varepsilon = 0{,}10$ en lloc d'1{,}0) i s'escurça el \emph{warmup}, perquè la política ja
+($\varepsilon = 0{,}10$ en lloc d'1{,}0) i s'escurça el període d'escalfament inicial
+(\emph{warmup}), perquè la política ja
 està formada i no cal tornar a explorar des de zero.
 
 \emph{Riscos.} El principal és l'\textbf{oblit catastròfic}: els algorismes on-policy com

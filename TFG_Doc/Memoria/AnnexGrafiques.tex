@@ -17,7 +17,7 @@ aporten detall complementari, no el resultat central de cada fase.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{figures/fase1/cell15.png}
-  \caption[Throughput dels quatre algorismes (M passos/hora).]{Velocitat d'entrenament en milions de passos per hora de càlcul.
+  \caption[Velocitat d'entrenament dels quatre algorismes (M passos/hora).]{Velocitat d'entrenament en milions de passos per hora de càlcul.
            \ac{PPO}-\ac{SB3} és 28~vegades més ràpid que \ac{NFSP}-RLCard gràcies
            al paral·lelisme de múltiples entorns.}
   \label{fig:ann-fase1-throughput}
@@ -30,7 +30,7 @@ aporten detall complementari, no el resultat central de cada fase.
   \includegraphics[width=\textwidth]{figures/fase2/cell06.png}
   \caption[Grup de control de la Fase~2 (24M passos en partides, sense currículum).]{Grup de control de la Fase~2: entrenament directament sobre partides senceres
            durant 24M passos, sense passar per mans. \ac{DQN}-\ac{SB3} és l'únic que
-           supera el 50\% contra l'agent basat en regles; els altres tres no depassem el 25\%.}
+           supera el 50\% contra l'agent basat en regles; els altres tres no superen el 25\%.}
   \label{fig:ann-fase2-control}
 \end{figure}
 
@@ -93,14 +93,7 @@ aporten detall complementari, no el resultat central de cada fase.
 \end{figure}
 
 % ---------------------------------------------------------------
-\section{Bloc 3: Robustesa i equilibri de Nash}
-% ---------------------------------------------------------------
-
-\subsection{Fase 6: \acs{NFSP}}
-
-
-% ---------------------------------------------------------------
-\section{Selecció del model de desplegament (Checkpoint~3)}
+\section{Bloc 3: selecció del model de desplegament (Checkpoint~3)}
 % ---------------------------------------------------------------
 
 \begin{figure}[H]
