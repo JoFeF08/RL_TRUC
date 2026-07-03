@@ -6,25 +6,27 @@
 El Truc és un joc de cartes tradicional d'arrel catalana i valenciana, molt arrelat a
 les Illes Balears, que es juga per parelles i combina informació oculta, dues apostes
 independents (l'envit i el truc) i el farol. Aquesta barreja el converteix en un problema
-d'informació parcial (formalment, un \acs{POMDP}) especialment exigent per a la
-intel·ligència artificial i, alhora, en un patrimoni cultural amenaçat per la dificultat
+d'informació parcial (formalment, un procés de decisió de Markov parcialment observable)
+especialment exigent per a la intel·ligència artificial i, alhora, en un patrimoni cultural
+amenaçat per la dificultat
 creixent de reunir-hi jugadors. Aquest treball desenvolupa i avalua agents d'aprenentatge
-per reforç profund capaços de jugar al Truc de manera competitiva, partint de zero i sense
-coneixement previ, en la variant d'un contra un sense senyes.
+per reforç profund capaços de jugar al Truc de manera competitiva, partint de models amb pesos aleatoris i sense
+coneixement específic del joc injectat prèviament, en la variant d'un contra un sense senyes.
 
 El treball s'articula en tres parts. Primer es construeix un simulador complet del joc amb
-arquitectura \acs{MVC}, jugable per humans i exposat com a entorn estàndard compatible amb
+arquitectura Model-Vista-Controlador, jugable per humans i exposat com a entorn estàndard compatible amb
 les biblioteques d'aprenentatge per reforç, amb una observació de 240~dimensions que combina
 un tensor de cartes i un vector de context. Després s'aplica una metodologia experimental
-incremental de sis fases, cadascuna guiada per una hipòtesi que condiciona la següent: una
+incremental de sis fases, cadascuna guiada per una hipòtesi que condiciona la següent.
+Aquesta inclou una
 comparativa homogènia d'algorismes (\acs{DQN}, \acs{PPO} i \acs{NFSP}), \emph{curriculum
 learning} de mans a partides senceres, un extractor de característiques convolucional amb
-preentrenament supervisat, memòria recurrent amb un \emph{pool} d'oponents, \emph{self-play}
+preentrenament supervisat, memòria recurrent amb un conjunt d'adversaris, \emph{self-play}
 mixt i, finalment, \acs{NFSP} complet per aproximar-se a l'equilibri de Nash.
 
 Els resultats indiquen que el coll d'ampolla inicial no és el còmput sinó el senyal
-d'aprenentatge: entrenar primer sobre mans individuals eleva el \acs{PPO} del 3{,}8\% al
-84{,}8\% de win-rate ponderat, i un cos convolucional preentrenat i congelat arriba al
+d'aprenentatge: entrenar primer sobre mans individuals incrementa el win-rate ponderat de
+\acs{PPO} del 3{,}8\% al 84{,}8\%, i un cos convolucional preentrenat i congelat arriba al
 91{,}2\%. El \emph{self-play} mixt millora la robustesa davant estils d'oponent diversos
 sense sacrificar rendiment, i el \acs{NFSP} assoleix un punt d'equilibri de Nash genuí. El
 model desplegat bat totes les variants de l'oponent heurístic i empata contra si mateix. Ara
