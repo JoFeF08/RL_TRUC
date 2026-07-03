@@ -3,7 +3,7 @@ __pycache__/
 .ipynb_checkpoints/
 resultats*
 registres*
-*/aux/
+TFG_Doc/Memoria/aux/*
 *.log
 *.lot
 *.bbl
@@ -20,3 +20,4 @@ registres*
 *.snm
 *.bcf
 *.run.xml
+
