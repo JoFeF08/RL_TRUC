@@ -1,0 +1,111 @@
+\documentclass[GINF,catalan]{TFGEPSUIB}
+
+\usepackage{indentfirst}
+\usepackage[section]{placeins}
+\usepackage{float}
+\raggedbottom
+\setlength{\parskip}{1pt plus 0.5pt minus 0.3pt}
+
+% Permet numerar i indexar fins a subsubsection (la classe ho limita a subsection).
+% Només afecta subsubseccions NO estrellades; les \subsubsection*{} del marc teòric no canvien.
+\maxsecnumdepth{subsubsection}
+\setsecnumdepth{subsubsection}
+\maxtocdepth{subsubsection}
+\settocdepth{subsubsection}
+\usepackage{amsmath,mathtools}
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\bfseries,
+  commentstyle=\itshape,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  xleftmargin=1.5em,
+  framexleftmargin=1.5em,
+}
+\usepackage[printonlyused]{acronym}
+\input{DefinicionsAcronims}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% Pseudocodi amb paraules clau en català
+\floatname{algorithm}{Algorisme}
+\algrenewcommand\algorithmicwhile{\textbf{mentre}}
+\algrenewcommand\algorithmicdo{\textbf{fer}}
+\algrenewcommand\algorithmicif{\textbf{si}}
+\algrenewcommand\algorithmicthen{\textbf{llavors}}
+\algrenewcommand\algorithmicelse{\textbf{si no}}
+\algrenewcommand\algorithmicend{\textbf{fi}}
+\algrenewcommand\algorithmicreturn{\textbf{retorna}}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage[backref, colorlinks=true, allcolors=black]{hyperref}
+
+%----------------------------------------------
+% Dades de la Portada
+%----------------------------------------------
+
+\title{Aprenentatge per Reforç Profund per al Joc del Truc}
+
+\author{Josep Ferriol Font}
+
+\tutor{Dr. Francesc Xavier Gayà Morey}
+\cotutor{Dr. Gabriel Moyà Alcover}
+
+\date{Any acadèmic 2025-26}
+
+\paraulesclau{\parbox[t]{12cm}{aprenentatge per reforç, truc, jocs de cartes, informació parcial, curriculum learning, self-play}}
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\begin{document}
+
+\portada
+\portadainterior
+\frontmatter
+
+\cleartorecto \thispagestyle{empty}
+\input{Agraiments}
+
+\cleartorecto \tableofcontents
+
+\cleartorecto \listoffigures
+\cleartorecto \listoftables
+
+\include{Acronims}
+
+\include{Resum}
+
+\mainmatter\pagestyle{ruled}
+
+%%%%%% COS DEL TREBALL %%%%%%%%%%%%
+
+\include{Introduccio}
+\include{MarcTeoric}
+\include{JocSimulacio}
+\include{EntornsRL}
+\include{Metodologia}
+\include{Resultats}
+\include{Conclusions}
+
+%%%%%%% Fi cos del treball %%%%%%%%%%%
+
+\appendix
+
+\include{AnnexGrafiques}
+\include{AnnexIA}
+
+%%%%%%% Fi apèndix
+
+\backmatter
+
+\bibliographystyle{IEEEtran}
+\bibliography{Bibliografia}
+
+\end{document}

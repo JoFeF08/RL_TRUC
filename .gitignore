@@ -7,9 +7,15 @@ resultats*
 *.lot
 *.bbl
 *.blg
+*.brf
 *.out
 *.aux
 *.toc
 *.lof
 *.fdb_latexmk
 *.fls
+*.synctex.gz
+*.nav
+*.snm
+*.bcf
+*.run.xml

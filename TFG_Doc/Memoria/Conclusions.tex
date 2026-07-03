@@ -1,0 +1,93 @@
+%!TeX root=MemoriaTFG.tex
+
+\chapter{Conclusions}
+\label{cap:conclusions}
+
+Aquest treball partia d'una motivació doble. D'una banda, un repte tècnic: aplicar
+l'\ac{AR} profund a un joc d'informació parcial poc estudiat en la literatura, el Truc, que
+hi afegeix apostes encadenades i farol. De l'altra, una motivació personal i cultural:
+dotar un joc tradicional amenaçat per la manca de jugadors d'un rival artificial que en
+permeti la pràctica encara que no hi hagi prou humans a la taula. Aquests dos fils s'han
+desplegat a través dels tres objectius fixats a la introducció: modelitzar i implementar el
+joc, comparar algorismes i tècniques d'entrenament, i avaluar el comportament dels agents
+resultants. El resultat és un arc que va des d'agents incapaços
+de superar el 40\% de win-rate contra una heurística senzilla (Fase~1) fins a un agent
+competitiu i estadísticament proper a l'equilibri de Nash (Fase~6).
+
+\section{Principals conclusions}
+
+\paragraph{Modelització i aplicació jugable.} El primer objectiu s'ha assolit plenament.
+S'ha construït un simulador fidel del Truc amb arquitectura \ac{MVC}, amb dues interfícies
+(consola i escriptori) i un mode humà contra agent, i s'ha exposat el mateix motor com a
+entorn estàndard compatible amb les biblioteques d'\ac{AR}, en variants d'un sol agent i
+multi-agent. El motor admet fins i tot la modalitat de dos contra dos amb senyes, encara
+que l'entrenament d'agents s'hagi circumscrit a la variant d'un contra un. La separació
+estricta de responsabilitats ha estat clau: substituir un rival humà per un agent d'\ac{AR}
+no ha exigit cap canvi ni al controlador ni al nucli del joc.
+
+\paragraph{Comparació d'algorismes i tècniques.} El segon objectiu deixa una lliçó
+transversal: el coll d'ampolla no era el còmput, sinó el \textbf{senyal d'aprenentatge}. El
+cas més clar és el \ac{PPO}, l'agent més ràpid i escalable però el més feble sobre partides
+senceres; factoritzar la partida en mans individuals (\emph{curriculum learning}) el va
+disparar del 3{,}8\% al 84{,}8\% de win-rate ponderat. Les fases següents refinen aquesta
+idea amb resultats matisats. Un extractor de característiques convolucional no aporta res
+per si sol amb pesos aleatoris, però preentrenat de forma supervisada i congelat arriba al
+91{,}2\% (\ac{DQN}): la inducció estructural només compensa amb una inicialització
+informativa. La memòria recurrent (\ac{LSTM}) no va rendir dins del pressupost disponible
+(82{,}0\% enfront del 86{,}0\% de la variant sense memòria, amb un cost 46 vegades superior),
+principalment per un desajust entre l'horitzó d'entrenament i el d'avaluació. Finalment, el
+\emph{self-play} mixt inspirat en el \ac{FSP} va millorar la robustesa davant estils
+d'oponent diversos (la robustesa inter-estil, \(\text{metric\_robust}\), va pujar de
+73{,}2\% a 77{,}8\%) sense degradar el rendiment global, i el \ac{NFSP} complet va assolir
+un punt d'equilibri de Nash empíric genuí (\emph{Nash gap} de 0{,}0~pp). Ara bé, el \ac{NFSP}
+no va reduir la dispersió entre estils respecte al \emph{self-play}: aproximar l'equilibri de
+Nash i maximitzar la robustesa inter-estil no són el mateix eix.
+
+\paragraph{Avaluació del comportament.} El tercer objectiu combina una anàlisi quantitativa
+i una de qualitativa. El model desplegat bat totes les variants de l'oponent heurístic
+(entre el 55{,}0\% i el 74{,}8\%) i empata contra si mateix (49{,}8\%), amb una política
+mixta i poc predictible. Quantitativament, ha après una autèntica divisió del treball entre
+les dues apostes: el truc funciona com a farol (desacoblat de la força de la mà) i l'envit
+es reserva per a les mans amb punts. Aquesta és, alhora, la conclusió més important del
+treball i la seva limitació més interessant: una proximitat estadística a l'equilibri
+\textbf{no equival} a un rival creïble i inexplotable per a una persona. El farol al truc,
+tot i ser eficaç contra oponents fixos, és tan sistemàtic que resulta llegible, i un jugador
+humà atent l'explotaria pagant el truc i esperant. La rúbrica qualitativa ho reflecteix amb
+una nota global de 2{,}5 sobre 5: gestió de l'envit sòlida, però farol i adaptació al
+marcador febles.
+
+\section{Limitacions}
+
+Els resultats s'han d'interpretar dins d'unes fronteres clares. L'entrenament s'ha limitat a
+la variant d'un contra un sense senyes, de manera que la coordinació per parelles (el nucli
+social del Truc) queda fora de l'estudi. L'avaluació qualitativa s'ha fet amb un model de
+llenguatge com a jutge (\emph{LLM-as-judge}), que és un indicador automàtic i no una
+validació amb jugadors humans reals. Algunes fases van treballar amb pressupostos reduïts
+(la memòria recurrent, 12M passos enfront dels 24M de les línies base) i amb un únic
+oponent de referència o poques llavors, cosa que limita la potència estadística d'alguns
+contrastos. Finalment, els valors de rendiment provenen dels experiments propis: no
+existeix cap \emph{benchmark} extern per al Truc que permeti situar l'agent respecte a
+altres sistemes.
+
+\section{Treball futur}
+
+La línia natural de continuació és la variant \textbf{cooperativa de dos contra dos amb
+senyes}, ja suportada pel motor però no entrenada. Introdueix dos reptes nous: la
+coordinació entre companys sense comunicació verbal explícita i la lectura (i possible
+explotació) de les senyes de l'adversari, un escenari genuïnament multi-agent. En segon
+lloc, val la pena reprendre la memòria recurrent amb el desajust corregit: alinear
+l'horitzó d'entrenament i el d'avaluació (sessions de partides senceres), reduir la mida de
+l'\ac{LSTM} i ampliar el pressupost. En tercer lloc, caldria una validació de credibilitat
+amb jugadors humans i estratègies específiques per fer el farol al truc menys predictible,
+com penalitzar els patrons regulars o adaptar l'agressió al marcador sense introduir
+debilitats explotables. Finalment, seria interessant comparar l'enfocament \ac{DRL} amb
+mètodes basats en \ac{FSP} tabular o \emph{Counterfactual Regret Minimization} adaptats al
+Truc, per contrastar la qualitat de l'equilibri assolit.
+
+En conjunt, el treball demostra que és possible entrenar des de zero un agent competitiu
+per a un joc de cartes tradicional d'informació parcial i, sobretot, deixa una lliçó que va
+més enllà del Truc: un agent proper a l'equilibri contra oponents heurístics pot continuar
+sent llegible per a una persona. Amb tot, l'objectiu que va originar aquest \ac{TFG} queda
+acomplert en la variant d'un contra un: el Truc pot continuar viu encara que no hi hagi prou
+humans disponibles, i la partida per parelles amb senyes resta com el pas següent per
+perpetuar plenament aquesta motivació inicial.

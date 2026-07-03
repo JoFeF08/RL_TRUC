@@ -1,0 +1,46 @@
+%!TeX root=MemoriaTFG.tex
+
+\chapter{Ús d'eines d'intel·ligència artificial}
+\label{ann:ia}
+
+Avui en dia, l'ús d'eines d'intel·ligència artificial s'ha convertit en una pràctica
+habitual tant en l'àmbit professional com en l'acadèmic. No obstant, la transparència
+sobre com i per a quins propòsits s'han emprat és essencial per garantir la integritat
+i la responsabilitat intel·lectual del treball. Les decisions metodològiques, les
+anàlisis i les conclusions d'aquest TFG recauen íntegrament en l'autor; les eines
+d'IA han actuat únicament com a suport en tasques concretes. Per aquest motiu,
+a continuació s'exposa detalladament quines eines s'han emprat, per a quines fases
+del TFG i amb quina finalitat.
+
+\renewcommand{\arraystretch}{1.5}
+\noindent
+\begin{tabular}{@{} l @{\hspace{0.4cm}} l @{\hspace{0.4cm}} l @{}}
+  \toprule
+  \textbf{Eina d'IA} & \textbf{Fase del TFG} & \textbf{Ús} \\
+  \midrule
+  \parbox[t]{3.4cm}{Gemini (Google)\\i NotebookLM} &
+  \parbox[t]{4cm}{Revisió bibliogràfica\\i estat de l'art} &
+  \parbox[t]{7.2cm}{Recerca d'informació sobre algorismes d'aprenentatge per reforç
+  (\acs{PPO}, \acs{DQN}, \acs{NFSP}) i marc teòric dels jocs d'informació imperfecta.} \\[30pt]
+
+  \parbox[t]{3.4cm}{Claude Code\\(Anthropic)} &
+  \parbox[t]{4cm}{Implementació i\\entrenament dels agents} &
+  \parbox[t]{7.2cm}{Generació de la base dels bucles d'entrenament (\emph{training loops}).
+  Els hiperparàmetres, les condicions de canvi de fase curricular i tota la lògica
+  específica del joc han estat ajustats i ampliats posteriorment pel propi autor.} \\[42pt]
+
+  \parbox[t]{3.4cm}{Claude Code\\(Anthropic)\\amb MCP Jupyter} &
+  \parbox[t]{4cm}{Anàlisi i visualització\\de resultats} &
+  \parbox[t]{7.2cm}{Elaboració del codi Python per generar les gràfiques dels notebooks
+  d'anàlisi (corbes d'aprenentatge, mapes de calor, diagrames de radar, etc.)
+  via servidor MCP de Jupyter.} \\[30pt]
+
+  \parbox[t]{3.4cm}{GitHub Copilot\\(Microsoft)} &
+  \parbox[t]{4cm}{Redacció de la memòria} &
+  \parbox[t]{7.2cm}{Suport en la redacció i la revisió de textos des de l'entorn
+  VS~Code. Les idees, conclusions i arguments principals han estat formulats i
+  supervisats per l'autor en tot moment.} \\[4pt]
+  \bottomrule
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
