@@ -1,2 +1,15 @@
 *.pyc
 __pycache__/
+.ipynb_checkpoints/
+resultats*
+*/aux/
+*.log
+*.lot
+*.bbl
+*.blg
+*.out
+*.aux
+*.toc
+*.lof
+*.fdb_latexmk
+*.fls
