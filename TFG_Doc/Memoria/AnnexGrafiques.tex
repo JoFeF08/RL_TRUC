@@ -119,9 +119,12 @@ aporten detall complementari, no el resultat central de cada fase.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{figures/checkpoint3/calibracio_estrategica.pdf}
-  \caption[Calibració estratègica dels candidats del Checkpoint~3.]{Calibració truc (esquerra) i envit (dreta) dels cinc candidats.
-           Tots presenten la mateixa tendència: menys truc amb mans fortes
-           (comportament de farol) i més envit amb puntuació alta.}
+  \caption[Calibració estratègica dels cinc candidats del Checkpoint~3.]{Taxa d'obrir truc per franja de força de mà (esquerra) i taxa d'obrir envit
+           per puntuació d'envit (dreta) dels cinc candidats (300 partides vs agent
+           equilibrat). Tots mostren el patró de farol al truc (decreixent amb la
+           força) i una política d'envit creixent amb la puntuació; les diferències
+           entre candidats són petites, cosa que confirma que la selecció es basa en
+           el Nash gap i no en el comportament qualitatiu.}
   \label{fig:ann-cp3-calibracio}
 \end{figure}
 
@@ -138,24 +141,14 @@ aporten detall complementari, no el resultat central de cada fase.
   \label{fig:ann-res-rendiment-barres}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{figures/resultats/accio_x_forca_barres.pdf}
-  \caption[Probabilitat d'obrir truc i envit per força de mà (barres).]{Probabilitat mitjana d'obrir truc i d'obrir envit per franja de
-           força de mà. El truc és màxim amb mans febles (95\%) i disminueix
-           amb mans fortes (farol); l'envit segueix el patró invers.}
-  \label{fig:ann-res-barres}
-\end{figure}
-
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{figures/resultats/calibracio_estrategica.pdf}
-  \caption[Calibració estratègica del model desplegat.]{Calibració estratègica del model final. Esquerra: taxa d'obrir truc
-           per franja de força; la tendència decreixent confirma el comportament
-           de farol (més truc amb mans febles). Dreta: taxa d'obrir envit per
-           puntuació d'envit; creix monotònicament, indicant una política ben
-           calibrada per a l'envit.}
+  \caption[Calibració estratègica del model desplegat (heatmap).]{Heatmap de la probabilitat d'obrir truc (esquerra) i d'obrir envit (dreta)
+           en funció conjunta de la força de mà i els punts d'envit, amb la
+           mostra per cel·la. Complementa la figura~\ref{fig:ann-cp3-calibracio}
+           mostrant la política del model final en dues dimensions simultàniament.}
   \label{fig:ann-res-calibracio}
 \end{figure}
 
@@ -163,7 +156,8 @@ aporten detall complementari, no el resultat central de cada fase.
   \centering
   \includegraphics[width=0.6\textwidth]{figures/resultats/estil_radar.pdf}
   \caption[Perfil d'estil emergent del model desplegat (diagrama de radar).]{Perfil d'estil emergent del model desplegat (vermell) comparat amb
-           l'agent basat en regles equilibrat (blau). El model és molt més
-           agressiu al truc (obre i reapuja molt) i menys a l'envit.}
+           l'agent basat en regles equilibrat (blau) en cinc dimensions de context.
+           El model mostra una agressió al truc superior i una propensió a l'envit
+           inferior a la de l'agent de regles.}
   \label{fig:ann-res-radar}
 \end{figure}

@@ -245,8 +245,7 @@ mecanisme d'aturada anticipada (\emph{early-stopping}) orientat a l'estabilitat 
 apareixen diverses avaluacions
 \(\text{nash\_valid}\) consecutives sense millora dual, l'entrenament s'atura.
 
-\emph{Comparació experimental.} L'entrenament F6-NFSP parteix dels pesos de
-\texttt{best\_robust.zip} de la Fase~5, manté \(\eta=0{,}5\), reservoir de 200\,000
+\emph{Comparació experimental.} L'entrenament F6-NFSP parteix dels pesos del millor model robust de la Fase~5, manté \(\eta=0{,}5\), reservoir de 200\,000
 mostres i actualització \ac{SL} cada 50\,000 passos. L'entrenament arriba als 20M
 passos i es tanca per l'aturada anticipada Nash
 (criteri de 8 avaluacions consecutives sense millora). La comparació directa és amb F5-selfplay.
@@ -341,7 +340,8 @@ per posició (meitat com a mà, meitat com a segon jugador), i cada model s'ha m
 la seva pròpia política \ac{SL} (\texttt{sl\_final.pt}). Aquesta distinció és clau: l'\texttt{exploit\_vs\_sl}
 mesura quant pot explotar el \ac{PPO} la seva pròpia política \ac{SL}; és una quantificació
 del Nash gap respecte a l'àncora \ac{SL} amb la qual ha conviscut durant l'entrenament
-(taula~\ref{tab:checkpoint3}).
+(taula~\ref{tab:checkpoint3}; la figura~\ref{fig:ann-cp3-candidats} de
+l'annex~\ref{ann:grafiques} en detalla el win-rate contra cada variant del pool).
 
 \begin{table}[H]
   \centering
@@ -386,9 +386,10 @@ com a \textbf{model de desplegament}.
 \emph{Perfil de comportament.} L'anàlisi conductual del model seleccionat (300~partides
 contra un agent equilibrat) revela que \texttt{best\_nash} mostra taxes d'envit prudents
 (taxa~2--3\%, similar als resultats més conservadors de la Fase~5), mentre les apostes de
-truc segueixen sent freqüents (\(\approx\)~72\%). L'anàlisi de calibració mostra que la
-relació entre la força de la mà i l'acció presa es manté coherent: ni sobreaposta ni
-subestimates. Això suggereix que la política ha après una estratègia equilibrada on l'ancorament
+truc segueixen sent freqüents (\(\approx\)~72\%); la figura~\ref{fig:ann-cp3-perfil} de
+l'annex~\ref{ann:grafiques} compara aquest perfil d'accions amb la resta de candidats.
+L'anàlisi de calibració (figura~\ref{fig:ann-cp3-calibracio}) mostra que la relació entre la
+força de la mà i l'acció presa es manté coherent: ni sobreaposta ni subaposta. Això suggereix que la política ha après una estratègia equilibrada on l'ancorament
 al \ac{SL} durant l'entrenament \ac{NFSP} ha impedit la sobreexplotació de l'oponent i ha
 promogut comportaments més sostenibles. L'anàlisi detallat d'aquest comportament es presenta
 al capítol~\ref{cap:resultats}.

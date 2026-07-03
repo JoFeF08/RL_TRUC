@@ -120,7 +120,9 @@ entrenaments nous amb COS i dos amb \ac{MLP} sobre mans; les quatre sèries \ac{
 curriculum es reutilitzen de la Fase~2 per no reentrenar-les.
 
 \paragraph{Resultats.} El COS amb pesos aleatoris no supera sistemàticament el \ac{MLP}
-(taula~\ref{tab:fase3}). Només aporta una millora clara al protocol de control per a
+(taula~\ref{tab:fase3}, comparada gràficament per protocol i agent a la
+figura~\ref{fig:ann-fase3-cos-mlp} de l'annex~\ref{ann:grafiques}). Només aporta una millora
+clara al protocol de control per a
 DQN-SB3 (+10{,}5~punts). El protocol \textbf{mans} torna a ser el millor en termes
 absoluts (totes les combinacions superen el 82\%), però la diferència entre COS i \ac{MLP}
 hi és marginal (\(<4\) punts). La inducció estructural per si sola, amb pesos aleatoris,
@@ -334,7 +336,8 @@ coneix l'oponent.
 \paragraph{Resultats.} Cap de les tres hipòtesis es valida plenament
 (taula~\ref{tab:fase4}). La figura~\ref{fig:fase4-corbes} mostra l'evolució del win-rate
 ponderat (\(\text{metric}\)); la figura~\ref{fig:fase4-adaptacio} detalla el win-rate per
-posició dins la sessió, clau per a H2.
+posició dins la sessió, clau per a H2. L'annex~\ref{ann:grafiques} en resumeix el pic per
+variant a la figura~\ref{fig:ann-fase4-barplot}.
 
 \begin{figure}[H]
   \centering

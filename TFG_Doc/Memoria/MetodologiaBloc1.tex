@@ -99,7 +99,8 @@ de la d'entrenament.
 de l'entrenament (de 62{,}8\% a 36{,}5\%): la seva millor mètrica és molt superior a la
 final. PPO-SB3 és el més feble a igualtat de passos (29{,}5\%), perquè un algorisme
 on-policy necessita molts més passos per estabilitzar-se, però té una velocitat d'entrenament
-incomparable (taula~\ref{tab:fase1-throughput}): genera 36{,}5~milions de passos per hora,
+incomparable (taula~\ref{tab:fase1-throughput}, representada gràficament a la
+figura~\ref{fig:ann-fase1-throughput} de l'annex~\ref{ann:grafiques}): genera 36{,}5~milions de passos per hora,
 28~vegades més que NFSP. Aquest contrast fa que el rànquing canviï entre els dos
 pressupostos (figura~\ref{fig:fase1-corbes-ts}).
 El patró comú a tots els agents és la \textbf{inestabilitat}: regredeixen cap al final de
@@ -323,6 +324,13 @@ passar a partides, el \emph{finetune} el desploma fins al 7{,}8\%. Es confirma a
 anticipat d'\textbf{oblit catastròfic}: en ser \emph{on-policy}, PPO descarta ràpidament la
 base apresa a les mans quan la distribució de partides senceres domina l'entrenament. El
 mateix efecte, més suau, apareix a DQN-SB3 (68{,}0\% $\rightarrow$ 41{,}5\%).
+
+L'annex~\ref{ann:grafiques} recull gràfiques complementàries d'aquesta fase: el grup de
+control entrenat directament sobre partides (figura~\ref{fig:ann-fase2-control}), la
+comparació entre mans i partides a pressupost equivalent
+(figures~\ref{fig:ann-fase2-etapa1} i~\ref{fig:ann-fase2-ctrl-vs-curr}) i el detall de la
+zona de transició mans~$\rightarrow$~partides, on es veu la caiguda més dràstica de PPO-SB3
+(figura~\ref{fig:ann-fase2-transicio}).
 
 \paragraph{Decisió.} La Fase~2 deixa dues conclusions. Primera: l'entrenament sobre mans
 (etapa~1) és la tècnica que trenca el sostre de la Fase~1, però només per als agents amb
