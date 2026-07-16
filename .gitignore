@@ -6,7 +6,6 @@ registres*
 TFG_Doc/Memoria/aux/*
 *.log
 *.lot
-*.bbl
 *.blg
 *.brf
 *.out
@@ -20,4 +19,3 @@ TFG_Doc/Memoria/aux/*
 *.snm
 *.bcf
 *.run.xml
-
